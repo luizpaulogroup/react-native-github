@@ -7,7 +7,8 @@ export default function App() {
       style={{
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#EEE'
       }}>
       <View>
         <Text>Hello World</Text>
