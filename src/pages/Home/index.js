@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { SafeAreaView, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
-export default class Home extends Component {
-    render() {
-        return (
-            <SafeAreaView
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text>Home</Text>
-            </SafeAreaView>
-        );
-    }
+import { Container } from '../../Components/Container';
+
+export default function Home({ navigation }) {
+    return (
+        <Container>
+            <Text>Home</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                <Text>Search</Text>
+            </TouchableOpacity>
+        </Container>
+    );
 }
+

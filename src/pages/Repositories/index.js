@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { SafeAreaView, Text } from 'react-native';
+import { Text } from 'react-native';
 
-export default class Repositories extends Component {
-    render() {
-        return (
-            <SafeAreaView
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                <Text>Repositories</Text>
-            </SafeAreaView>
-        );
-    }
+import { Container } from '../../Components/Container';
+
+export default function Repositories({ navigation }) {
+    return (
+        <Container>
+            <Text>Repositories</Text>
+        </Container>
+    );
 }
