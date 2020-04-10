@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
-import { Text, TouchableOpacity } from 'react-native';
-
-import { Container } from '../../Components/Container';
+import { Container, Title, Input, Button, ButtonText } from '../../Components/Container';
 
 export default function Home({ navigation }) {
+
+    const [user, setUser] = useState("");
+
     return (
         <Container>
-            <Text>Home</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                <Text>Search</Text>
-            </TouchableOpacity>
+            <Title>Search for github users</Title>
+            <Input
+                placeholder="Enter the name here..."
+                value={user}
+                onChangeText={setUser}
+            />
+            <Button onPress={() => navigation.navigate('Profile')}>
+                <ButtonText>Search</ButtonText>
+            </Button>
         </Container>
     );
 }

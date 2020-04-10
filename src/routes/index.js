@@ -8,7 +8,6 @@ import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import Home from '../pages/Home';
 import Account from '../pages/Account';
 import Configuration from '../pages/Configuration';
-import Search from '../pages/Search';
 import Profile from '../pages/Profile';
 import Repositories from '../pages/Repositories';
 import Followers from '../pages/Followers';
@@ -19,7 +18,6 @@ function myStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="Repositories" component={Repositories} />
             <Stack.Screen name="Followers" component={Followers} />
