@@ -104,5 +104,5 @@ export default function Account({ navigation }) {
                 )}
             />
         </Container>
-    );
+    )
 }

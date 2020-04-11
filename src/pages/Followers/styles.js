@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { StyleSheet } from 'react-native';
 
 export const ContentUser = styled.View`
     flex: 1;
@@ -15,7 +16,7 @@ export const Follower = styled.TouchableOpacity`
     padding: 10px;
     display: flex;
     flex-direction: row;
-    border-bottom-width: 0.3px;
+    border-bottom-width: ${StyleSheet.hairlineWidth}px;
     background: #FFF;
     border-radius: 5px;
 `;

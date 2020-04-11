@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Text } from 'react-native';
 
 import { Container } from '../../Components/Container';
 
-export default function Configuration({ navigation }) {
+export default function Configuration() {
     return (
-        <Container>
+        <Container style={{
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
             <Text>Configuration</Text>
         </Container>
     );

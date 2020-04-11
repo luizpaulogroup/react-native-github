@@ -19,7 +19,7 @@ import api from '../../services/api';
 
 export default function Profile({ navigation, route }) {
 
-    const { user, refresh } = route.params;
+    const { user } = route.params;
 
     const [repos, setRepos] = useState([]);
     const [followers, setFollowers] = useState([]);
@@ -31,23 +31,11 @@ export default function Profile({ navigation, route }) {
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
     const [exist, setExist] = useState(false);
 
-    refresh ? _load(true) : _load(false);
-
-    function _load(retrive) {
-
-        getRepos;
-        getFollowers;
-
-        if (retrive) {
-            retriveData;
-        }
-
-    }
-
     useEffect(() => {
+        retriveData();
         getRepos();
         getFollowers();
-    }, [exist]);
+    }, [exist, repos, followers]);
 
     const getRepos = async () => {
 
@@ -101,13 +89,21 @@ export default function Profile({ navigation, route }) {
 
             var json = JSON.parse(storage);
 
+            var existTmp = false;
+
             Object.entries(json).forEach(([key, value]) => {
 
                 if (value.id === user.id) {
-                    setExist(true);
+                    existTmp = true;
                 }
 
             });
+
+            if (existTmp) {
+                setExist(true);
+            } else {
+                setExist(false);
+            }
 
         } catch (error) {
             alert(`retriveData : ${error.message}`);
@@ -117,8 +113,6 @@ export default function Profile({ navigation, route }) {
     }
 
     const addUser = async () => {
-
-        console.log('init addUser...');
 
         setLoadingAddToStore(true);
 
@@ -170,8 +164,6 @@ export default function Profile({ navigation, route }) {
 
     const delUser = async () => {
 
-        console.log('init delUser...');
-
         setLoadingDelToStore(true);
 
         try {
@@ -212,7 +204,10 @@ export default function Profile({ navigation, route }) {
     const handleFollowers = () => navigation.navigate('Followers', { followers, user: user.login });
 
     return (
-        <Container>
+        <Container style={{
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <ButtonBack onPress={() => navigation.goBack()}>
                     <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />

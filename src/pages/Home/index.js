@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { Container, Title, Input, Button, ButtonText } from '../../Components/Container';
 
@@ -8,12 +9,14 @@ import api from '../../services/api';
 
 export default function Home({ navigation }) {
 
+    console.log(navigation);
+
     const [user, setUser] = useState("luizpaulogroup");
     const [loading, setLoading] = useState(false);
     const [isConnected, setIsConnected] = useState(true);
 
     useEffect(() => {
-        NetInfo.fetch().then(({ isConnected }) => setIsConnected(isConnected));        
+        NetInfo.fetch().then(({ isConnected }) => setIsConnected(isConnected));
     }, [isConnected])
 
     const getUser = async () => {
@@ -22,7 +25,7 @@ export default function Home({ navigation }) {
 
         try {
 
-            if(!isConnected){
+            if (!isConnected) {
                 alert('Check your internet connection');
                 setLoading(false);
                 return;
@@ -59,16 +62,26 @@ export default function Home({ navigation }) {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            <Title>Search for github users</Title>
-            <Input
-                placeholder="Enter the name here..."
-                value={user}
-                onChangeText={setUser}
-            />
-            <Button disabled={loading} onPress={getUser}>
-                {loading ? <ActivityIndicator /> : <ButtonText>Search</ButtonText>}
-            </Button>
-        </Container>
+            <LinearGradient
+                colors={['#EEE', '#F5F5F5']}
+                style={{
+                    flex: 1,
+                    alignSelf: 'stretch',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
+                <Title>Search for github users</Title>
+                <Input
+                    placeholder="Enter the name here..."
+                    value={user}
+                    onChangeText={setUser}
+                />
+                <Button disabled={loading} onPress={getUser}>
+                    {loading ? <ActivityIndicator /> : <ButtonText>Search</ButtonText>}
+                </Button>
+            </LinearGradient>
+        </Container >
     );
 }
 
