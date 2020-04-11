@@ -9,8 +9,6 @@ import api from '../../services/api';
 
 export default function Home({ navigation }) {
 
-    console.log(navigation);
-
     const [user, setUser] = useState("luizpaulogroup");
     const [loading, setLoading] = useState(false);
     const [isConnected, setIsConnected] = useState(true);

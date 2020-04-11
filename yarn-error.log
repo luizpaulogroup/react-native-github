@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js remove react-native-linear-gradient
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-animated-header
 
 PATH: 
   C:\Users\Luiz Paulo\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Luiz Paulo\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Program Files\Condusiv Technologies\ExpressCache;C:\Program Files\Git LFS;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\composer;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\Luiz Paulo\AppData\Local\Microsoft\WindowsApps;C:\Users\Luiz Paulo\AppData\Local\Yarn\bin;C:\Users\Luiz Paulo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Luiz Paulo\AppData\Roaming\npm;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Users\Luiz Paulo\AppData\Local\atom\bin;C:\Users\Luiz Paulo\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\Luiz Paulo\AppData\Local\GitHubDesktop\bin;C:\xamp\php;C:\Users\Luiz Paulo\composer;C:\Users\Luiz Paulo\AppData\Roaming\Composer\vendor\bin;C:\Users\Luiz Paulo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Luiz Paulo\Desktop\REPOS\mygit\node_modules\react-native-linear-gradient\BVLinearGradient'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Luiz Paulo\Desktop\REPOS\mygit\node_modules\@babel\generator\node_modules\.bin'
 
 npm manifest: 
   {
@@ -28,7 +28,7 @@ npm manifest:
     },
     "dependencies": {
       "@react-native-community/masked-view": "0.1.6",
-      "@react-native-community/netinfo": "^5.7.0",
+      "@react-native-community/netinfo": "5.5.1",
       "@react-navigation/bottom-tabs": "^5.2.6",
       "@react-navigation/drawer": "^5.4.1",
       "@react-navigation/material-bottom-tabs": "^5.1.8",
@@ -36,6 +36,7 @@ npm manifest:
       "@react-navigation/stack": "^5.2.10",
       "axios": "^0.19.2",
       "expo": "~37.0.3",
+      "expo-linear-gradient": "~8.1.0",
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
@@ -1223,10 +1224,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.6.tgz#c7f2ac187c1f25aa8c30d11baa8f4398eca3bb84"
     integrity sha512-PpMoeXwPUoldCRKDuSi+zK5rT+sJTW6ri6RdGPkSKRzU77Q1d9IaR0O5IKvBj0XSdL3p+dcOa05gk35aGDffBQ==
   
-  "@react-native-community/netinfo@^5.7.0":
-    version "5.7.0"
-    resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.7.0.tgz#54be55f22c6a6358d5d61f2aa1bc1de20c7b53b6"
-    integrity sha512-ZhmkaqRpLFvOMu/Ln3YCitBJUgk7lbFsvcinbW/LIktXM6BwVwEZPTkYr+N74hEAhKz2CcDN8aMzzaokxwxRqg==
+  "@react-native-community/netinfo@5.5.1":
+    version "5.5.1"
+    resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.5.1.tgz#6433d4d9d5fbe836f019e5a88a6a24b6e2dc50b9"
+    integrity sha512-6NKX/WzzC5FP2RSzoq+7CW/iIiRL2S6yN0JKiGvZ8EWAzJ43dbX5KG4kRa1JiKopAal5Vyh80dymbygeylwekQ==
   
   "@react-navigation/bottom-tabs@^5.2.6":
     version "5.2.6"
@@ -4518,11 +4519,6 @@ Lockfile:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
-  
-  react-native-linear-gradient@^2.5.6:
-    version "2.5.6"
-    resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
-    integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
   
   react-native-paper@^3.8.0:
     version "3.8.0"

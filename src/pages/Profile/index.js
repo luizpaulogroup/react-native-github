@@ -2,18 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, ActivityIndicator, AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
+import AnimatedHeader from '../../Components/HeaderAnimated';
+
 import { Container } from '../../Components/Container';
 
-import {
-    ButtonBack,
-    AvatarUrl,
-    ContentUser,
-    LoginUser,
-    BioUser,
-    ActionsUser,
-    Button,
-    ButtonText
-} from './styles';
+import { ButtonBack, ContentUser, BioUser, ActionsUser, Button, ButtonText } from './styles';
 
 import api from '../../services/api';
 
@@ -208,33 +201,50 @@ export default function Profile({ navigation, route }) {
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <ButtonBack onPress={() => navigation.goBack()}>
-                    <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />
-                </ButtonBack>
-                <AvatarUrl source={{ uri: user.avatar_url }} />
-                <ContentUser>
-                    <LoginUser>{user.login}</LoginUser>
-                    <BioUser>{user.bio}</BioUser>
-                    <ActionsUser>
-                        {exist ? (
-                            <Button style={{ backgroundColor: '#FFF' }} disabled={loadingDelToStore} onPress={delUser}>
-                                {loadingDelToStore ? <ActivityIndicator /> : <ButtonText>Following</ButtonText>}
-                            </Button>
-                        ) : (
-                                <Button style={{ backgroundColor: '#1976D2' }} disabled={loadingAddToStore} onPress={addUser}>
-                                    {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
+            <AnimatedHeader
+                style={{ flex: 1 }}
+                title={user.login}
+                renderLeft={() => (
+                    <ButtonBack onPress={() => navigation.goBack()}>
+                        <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />
+                    </ButtonBack>
+                )}
+                titleStyle={{
+                    fontSize: 22,
+                    fontWeight: 'bold',
+                    left: 10,
+                    bottom: -30,
+                    color: '#000'
+                }}
+                headerMaxHeight={300}
+                parallax={true}
+                imageSource={user.avatar_url}
+                toolbarColor='#FFF'
+                disabled={false}
+            >
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <ContentUser>
+                        <BioUser>{user.bio}</BioUser>
+                        <ActionsUser>
+                            {exist ? (
+                                <Button style={{ backgroundColor: '#FFF' }} disabled={loadingDelToStore} onPress={delUser}>
+                                    {loadingDelToStore ? <ActivityIndicator /> : <ButtonText>Following</ButtonText>}
                                 </Button>
-                            )}
-                        {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
-                            {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
-                        </Button>}
-                        {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
-                            {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                        </Button>}
-                    </ActionsUser>
-                </ContentUser>
-            </ScrollView>
+                            ) : (
+                                    <Button style={{ backgroundColor: '#1976D2' }} disabled={loadingAddToStore} onPress={addUser}>
+                                        {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
+                                    </Button>
+                                )}
+                            {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
+                                {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
+                            </Button>}
+                            {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
+                                {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
+                            </Button>}
+                        </ActionsUser>
+                    </ContentUser>
+                </ScrollView>
+            </AnimatedHeader>
         </Container>
     );
 }
