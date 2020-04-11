@@ -69,8 +69,6 @@ export default function Profile({ navigation, route }) {
 
             var json = JSON.parse(storage);
 
-            console.log(json)
-
             Object.entries(json).forEach(([key, value]) => {
 
                 if (value.id === data.id) {
@@ -125,8 +123,6 @@ export default function Profile({ navigation, route }) {
 
                 setExist(true);
 
-                alert('Usuário adicionado na sua lista com sucesso');
-
             }
 
         } catch (error) {
@@ -155,6 +151,7 @@ export default function Profile({ navigation, route }) {
 
                 if (value.id != data.id) {
                     array[counter] = value;
+                    counter++;
                 }
 
             });
@@ -162,8 +159,6 @@ export default function Profile({ navigation, route }) {
             await AsyncStorage.setItem('STORE', JSON.stringify(array));
             
             setExist(false);
-
-            alert('Usuário removido da sua lista com sucesso');
 
             console.log('User successfully removed from your list');
             

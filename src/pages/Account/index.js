@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, AsyncStorage, ActivityIndicator } from 'react-native';
-import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 import { Container, Title } from '../../Components/Container';
 
@@ -23,10 +22,9 @@ export default function Account({ navigation }) {
             const storage = await AsyncStorage.getItem('STORE');
 
             var json = JSON.parse(storage);
-
-            console.log(json);
             
             setUsers(json);
+            
 
         } catch (error) {
             console.log(error);
@@ -57,13 +55,13 @@ export default function Account({ navigation }) {
 
                 if (value.id != id) {
                     array[counter] = value;
+
+                    counter++;
                 }
 
             });
 
             await AsyncStorage.setItem('STORE', JSON.stringify(array));
-
-            alert('Usuário removido da sua lista com sucesso');
 
             console.log('User successfully removed from your list');
 
