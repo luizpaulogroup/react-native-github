@@ -18,7 +18,9 @@ function myStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Profile" component={Profile} options={{
+                header: () => null
+            }} />
             <Stack.Screen name="Repositories" component={Repositories} />
             <Stack.Screen name="Followers" component={Followers} />
         </Stack.Navigator>

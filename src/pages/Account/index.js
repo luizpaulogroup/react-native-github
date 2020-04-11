@@ -12,19 +12,18 @@ export default function Account({ navigation }) {
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
 
     useEffect(() => {
-        _retriveData();
+        retriveData();
     }, [userId]);
 
-    const _retriveData = async () => {
+    const retriveData = async () => {
 
         try {
 
             const storage = await AsyncStorage.getItem('STORE');
 
             var json = JSON.parse(storage);
-            
+
             setUsers(json);
-            
 
         } catch (error) {
             console.log(error);
@@ -32,11 +31,7 @@ export default function Account({ navigation }) {
 
     }
 
-    const delUser = async (id = null) => {
-
-        if (!id) {
-            return;
-        }
+    const delUser = async id => {
 
         setUserId(id);
         setLoadingDelToStore(true);
@@ -89,7 +84,14 @@ export default function Account({ navigation }) {
                 data={users}
                 keyExtractor={item => String(item.id)}
                 renderItem={({ item }) => (
-                    <User>
+                    <User onPress={() => navigation.navigate('Profile', {
+                        data: {
+                            id: item.id,
+                            login: item.login,
+                            avatar_url: item.avatar_url,
+                            bio: item.bio
+                        }
+                    })}>
                         <UserInfo>
                             <UserAvatarUrl source={{ uri: item.avatar_url }} />
                             <UserName>{item.login}</UserName>

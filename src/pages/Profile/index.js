@@ -2,9 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, ActivityIndicator, AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
-import { Container, Button, ButtonText } from '../../Components/Container';
+import { Container } from '../../Components/Container';
 
-import { AvatarUrl, ContentUser, LoginUser, BioUser } from './styles';
+import {
+    ButtonBack,
+    AvatarUrl,
+    ContentUser,
+    LoginUser,
+    BioUser,
+    ActionsUser,
+    Button,
+    ButtonText
+} from './styles';
 
 import api from '../../services/api';
 
@@ -22,7 +31,7 @@ export default function Profile({ navigation, route }) {
     useEffect(() => {
         getRepos();
         getFollowers();
-        _retriveData();
+        retriveData();
     }, [exist]);
 
     const getRepos = async () => {
@@ -61,7 +70,7 @@ export default function Profile({ navigation, route }) {
 
     }
 
-    const _retriveData = async () => {
+    const retriveData = async () => {
 
         try {
 
@@ -157,11 +166,11 @@ export default function Profile({ navigation, route }) {
             });
 
             await AsyncStorage.setItem('STORE', JSON.stringify(array));
-            
+
             setExist(false);
 
             console.log('User successfully removed from your list');
-            
+
         } catch (error) {
             console.log(error);
         }
@@ -177,27 +186,31 @@ export default function Profile({ navigation, route }) {
     return (
         <Container>
             <ScrollView showsVerticalScrollIndicator={false}>
+                <ButtonBack onPress={() => navigation.goBack()}>
+                    <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />
+                </ButtonBack>
                 <AvatarUrl source={{ uri: data.avatar_url }} />
                 <ContentUser>
                     <LoginUser>{data.login}</LoginUser>
                     <BioUser>{data.bio}</BioUser>
-                </ContentUser>
-                <ContentUser>
-                    {exist ? (
-                        <Button style={{ backgroundColor: 'red' }} disabled={loadingDelToStore} onPress={delUser}>
-                            {loadingDelToStore ? <ActivityIndicator /> : <ButtonText><MaterialCommunityIcons name="minus-circle" size={18} /> Remover da minha lista</ButtonText>}
-                        </Button>
-                    ) : (
-                            <Button style={{ backgroundColor: 'green' }} disabled={loadingAddToStore} onPress={addUser}>
-                                {loadingAddToStore ? <ActivityIndicator /> : <ButtonText><MaterialCommunityIcons name="plus" size={18} /> Salvar na minha lista</ButtonText>}
+                    <ActionsUser>
+                        {exist ? (
+                            <Button style={{ backgroundColor: '#FFF' }} disabled={loadingDelToStore} onPress={delUser}>
+                                {loadingDelToStore ? <ActivityIndicator /> : <ButtonText>Following</ButtonText>}
                             </Button>
-                        )}
-                    <Button disabled={loading} onPress={handleRepositories}>
-                        {loading ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
-                    </Button>
-                    <Button disabled={loading} onPress={handleFollowers}>
-                        {loading ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                    </Button>
+                        ) : (
+                                <Button style={{ backgroundColor: '#1976D2' }} disabled={loadingAddToStore} onPress={addUser}>
+                                    {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
+                                </Button>
+                            )}
+                        <Button style={{ marginLeft: 2 }} disabled={loading} onPress={handleRepositories}>
+                            {loading ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
+                        </Button>
+                        <Button style={{ marginLeft: 2 }} disabled={loading} onPress={handleFollowers}>
+                            {loading ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
+                        </Button>
+                    </ActionsUser>
+
                 </ContentUser>
             </ScrollView>
         </Container>

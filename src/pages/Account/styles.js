@@ -9,7 +9,7 @@ export const ContentUser = styled.View`
     align-items: center;    
 `;
 
-export const User = styled.View`
+export const User = styled.TouchableOpacity`
     align-self: stretch;
     margin: 5px;
     padding: 10px;
