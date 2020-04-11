@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 
-export const ButtonBack = styled.TouchableOpacity``;
+export const ButtonBack = styled.TouchableOpacity`
+  margin-left: 10px;
+`;
 
 export const ContentUser = styled.View`
     padding: 5px;

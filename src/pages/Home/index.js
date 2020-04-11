@@ -35,7 +35,7 @@ export default function Home({ navigation }) {
                 return;
             }
 
-            const response = await api.get(`/users/${user}`);
+            const response = await api.get(`/users/${user.trim()}`);
 
             const { data } = response;
 

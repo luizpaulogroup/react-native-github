@@ -26,8 +26,8 @@ export default function Profile({ navigation, route }) {
 
     useEffect(() => {
         retriveData();
-        getRepos();
-        getFollowers();
+        // getRepos();
+        // getFollowers();
     }, [exist, repos, followers]);
 
     const getRepos = async () => {
@@ -206,7 +206,7 @@ export default function Profile({ navigation, route }) {
                 title={user.login}
                 renderLeft={() => (
                     <ButtonBack onPress={() => navigation.goBack()}>
-                        <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />
+                        <MaterialCommunityIcons name="arrow-left" size={30} color="#000" />
                     </ButtonBack>
                 )}
                 titleStyle={{
@@ -235,12 +235,12 @@ export default function Profile({ navigation, route }) {
                                         {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
                                     </Button>
                                 )}
-                            {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
+                            {/* {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
                                 {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
                             </Button>}
                             {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
                                 {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                            </Button>}
+                            </Button>} */}
                         </ActionsUser>
                     </ContentUser>
                 </ScrollView>
