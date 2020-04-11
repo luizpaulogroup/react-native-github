@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { Container, Title, Input, Button, ButtonText } from '../../Components/Container';
 
 import api from '../../services/api';
@@ -7,13 +7,17 @@ import api from '../../services/api';
 export default function Home({ navigation }) {
 
     const [user, setUser] = useState("luizpaulogroup");
+    const [loading, setLoading] = useState(false);
 
     const getUser = async () => {
+
+        setLoading(true);
 
         try {
 
             if (!user) {
                 alert('Enter the name please');
+                setLoading(false);
                 return;
             }
 
@@ -23,6 +27,7 @@ export default function Home({ navigation }) {
 
             if (!data.id) {
                 alert('Usuário não encontrado');
+                setLoading(false);
                 return;
             }
 
@@ -31,6 +36,8 @@ export default function Home({ navigation }) {
         } catch (error) {
             alert(error.message);
         }
+
+        setLoading(false);
 
     }
 
@@ -45,8 +52,8 @@ export default function Home({ navigation }) {
                 value={user}
                 onChangeText={setUser}
             />
-            <Button onPress={getUser}>
-                <ButtonText>Search</ButtonText>
+            <Button disabled={loading} onPress={getUser}>
+                {loading ? <ActivityIndicator /> : <ButtonText>Search</ButtonText>}
             </Button>
         </Container>
     );

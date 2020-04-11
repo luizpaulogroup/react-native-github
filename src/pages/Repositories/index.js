@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 import { Container, Title } from '../../Components/Container';
@@ -20,12 +20,11 @@ export default function Repositories({ navigation, route }) {
 
     const { repos, user } = route.params;
 
-    console.log(repos);
-
     return (
         <Container>
             <ContentUser>
-                <Title style={{ margin: 10 }}>{user}</Title>
+                <Text style={{ color: '#999' }}>Repositories</Text>
+                <Title style={{ marginBottom: 10 }}>{user}</Title>
             </ContentUser>
             <FlatList
                 showsVerticalScrollIndicator={false}

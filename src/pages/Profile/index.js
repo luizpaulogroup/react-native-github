@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { ScrollView } from 'react-native';
+import { ScrollView, ActivityIndicator } from 'react-native';
 
 import { Container, Button, ButtonText } from '../../Components/Container';
 
@@ -14,12 +14,16 @@ export default function Profile({ navigation, route }) {
 
     const [repos, setRepos] = useState([]);
     const [followers, setFollowers] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getRepos();
+        getFollowers();
     }, []);
 
     const getRepos = async () => {
+
+        setLoading(true);
 
         try {
 
@@ -31,9 +35,13 @@ export default function Profile({ navigation, route }) {
             alert(error.message);
         }
 
+        setLoading(false);
+
     }
 
     const getFollowers = async () => {
+
+        setLoading(true);
 
         try {
 
@@ -45,7 +53,13 @@ export default function Profile({ navigation, route }) {
             alert(error.message);
         }
 
+        setLoading(false);
+
     }
+
+    const handleRepositories = () => navigation.navigate('Repositories', { repos, user: data.login });
+
+    const handleFollowers = () => navigation.navigate('Followers', { followers, user: data.login });
 
     return (
         <Container>
@@ -56,11 +70,11 @@ export default function Profile({ navigation, route }) {
                     <BioUser>{data.bio}</BioUser>
                 </ContentUser>
                 <ContentUser>
-                    <Button onPress={() => navigation.navigate('Repositories', { repos, user: data.login })}>
-                        <ButtonText>Repositories</ButtonText>
+                    <Button disabled={loading} onPress={handleRepositories}>
+                        {loading ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
                     </Button>
-                    <Button onPress={() => navigation.navigate('Followers', { followers, user: data.login })}>
-                        <ButtonText>Followers</ButtonText>
+                    <Button disabled={loading} onPress={handleFollowers}>
+                        {loading ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
                     </Button>
                 </ContentUser>
             </ScrollView>
