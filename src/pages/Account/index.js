@@ -85,12 +85,13 @@ export default function Account({ navigation }) {
                 keyExtractor={item => String(item.id)}
                 renderItem={({ item }) => (
                     <User onPress={() => navigation.navigate('Profile', {
-                        data: {
+                        user: {
                             id: item.id,
                             login: item.login,
                             avatar_url: item.avatar_url,
                             bio: item.bio
-                        }
+                        },
+                        refresh: true
                     })}>
                         <UserInfo>
                             <UserAvatarUrl source={{ uri: item.avatar_url }} />

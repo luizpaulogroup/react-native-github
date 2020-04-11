@@ -19,54 +19,77 @@ import api from '../../services/api';
 
 export default function Profile({ navigation, route }) {
 
-    const { data } = route.params;
+    const { user, refresh } = route.params;
 
     const [repos, setRepos] = useState([]);
     const [followers, setFollowers] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [errorRepos, setErrorRepos] = useState(false);
+    const [loadingRepos, setLoadingRepos] = useState(false);
+    const [errorFollowers, setErrorFollowers] = useState(false);
+    const [loadingFollowers, setLoadingFollowers] = useState(false);
     const [loadingAddToStore, setLoadingAddToStore] = useState(false);
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
     const [exist, setExist] = useState(false);
 
+    refresh ? _load(true) : _load(false);
+
+    function _load(retrive) {
+
+        getRepos;
+        getFollowers;
+
+        if (retrive) {
+            retriveData;
+        }
+
+    }
+
     useEffect(() => {
         getRepos();
         getFollowers();
-        retriveData();
     }, [exist]);
 
     const getRepos = async () => {
 
-        setLoading(true);
+        setLoadingRepos(true);
+        setErrorRepos(false);
 
         try {
 
-            const response = await api.get(`/users/${data.login}/repos`);
+            const response = await api.get(`/users/${user.login}/repos`);
 
             setRepos(response.data);
 
         } catch (error) {
-            alert(error.message);
+            setErrorRepos(true);
+            setLoadingRepos(false);
+            alert(`getRepos: ${error.message}`);
+            return;
         }
 
-        setLoading(false);
+        setLoadingRepos(false);
 
     }
 
     const getFollowers = async () => {
 
-        setLoading(true);
+        setLoadingFollowers(true);
+        setErrorFollowers(false);
 
         try {
 
-            const response = await api.get(`/users/${data.login}/followers`);
+            const response = await api.get(`/users/${user.login}/followers`);
 
             setFollowers(response.data);
 
         } catch (error) {
-            alert(error.message);
+            setErrorFollowers(true);
+            setLoadingFollowers(false);
+            alert(`getFollowers : ${error.message}`);
+            return;
         }
 
-        setLoading(false);
+        setLoadingFollowers(false);
 
     }
 
@@ -80,29 +103,32 @@ export default function Profile({ navigation, route }) {
 
             Object.entries(json).forEach(([key, value]) => {
 
-                if (value.id === data.id) {
+                if (value.id === user.id) {
                     setExist(true);
                 }
 
             });
 
         } catch (error) {
-            console.log(error);
+            alert(`retriveData : ${error.message}`);
+            return;
         }
 
     }
 
     const addUser = async () => {
 
+        console.log('init addUser...');
+
         setLoadingAddToStore(true);
 
         try {
 
             var obj = {
-                id: data.id,
-                login: data.login,
-                avatar_url: data.avatar_url,
-                bio: data.bio
+                id: user.id,
+                login: user.login,
+                avatar_url: user.avatar_url,
+                bio: user.bio
             }
 
             const storage = await AsyncStorage.getItem('STORE');
@@ -115,7 +141,7 @@ export default function Profile({ navigation, route }) {
 
             Object.entries(json).forEach(([key, value]) => {
 
-                if (value.id == data.id) {
+                if (value.id == user.id) {
                     alert('Você já adicionou esse usuário na sua lista');
                     error = true;
                 }
@@ -144,6 +170,8 @@ export default function Profile({ navigation, route }) {
 
     const delUser = async () => {
 
+        console.log('init delUser...');
+
         setLoadingDelToStore(true);
 
         try {
@@ -158,7 +186,7 @@ export default function Profile({ navigation, route }) {
 
             Object.entries(json).forEach(([key, value]) => {
 
-                if (value.id != data.id) {
+                if (value.id != user.id) {
                     array[counter] = value;
                     counter++;
                 }
@@ -179,9 +207,9 @@ export default function Profile({ navigation, route }) {
 
     }
 
-    const handleRepositories = () => navigation.navigate('Repositories', { repos, user: data.login });
+    const handleRepositories = () => navigation.navigate('Repositories', { repos, user: user.login });
 
-    const handleFollowers = () => navigation.navigate('Followers', { followers, user: data.login });
+    const handleFollowers = () => navigation.navigate('Followers', { followers, user: user.login });
 
     return (
         <Container>
@@ -189,10 +217,10 @@ export default function Profile({ navigation, route }) {
                 <ButtonBack onPress={() => navigation.goBack()}>
                     <MaterialCommunityIcons name="arrow-left" size={25} color="#000" />
                 </ButtonBack>
-                <AvatarUrl source={{ uri: data.avatar_url }} />
+                <AvatarUrl source={{ uri: user.avatar_url }} />
                 <ContentUser>
-                    <LoginUser>{data.login}</LoginUser>
-                    <BioUser>{data.bio}</BioUser>
+                    <LoginUser>{user.login}</LoginUser>
+                    <BioUser>{user.bio}</BioUser>
                     <ActionsUser>
                         {exist ? (
                             <Button style={{ backgroundColor: '#FFF' }} disabled={loadingDelToStore} onPress={delUser}>
@@ -203,14 +231,13 @@ export default function Profile({ navigation, route }) {
                                     {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
                                 </Button>
                             )}
-                        <Button style={{ marginLeft: 2 }} disabled={loading} onPress={handleRepositories}>
-                            {loading ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
-                        </Button>
-                        <Button style={{ marginLeft: 2 }} disabled={loading} onPress={handleFollowers}>
-                            {loading ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                        </Button>
+                        {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
+                            {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
+                        </Button>}
+                        {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
+                            {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
+                        </Button>}
                     </ActionsUser>
-
                 </ContentUser>
             </ScrollView>
         </Container>
