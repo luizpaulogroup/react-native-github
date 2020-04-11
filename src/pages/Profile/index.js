@@ -179,8 +179,6 @@ export default function Profile({ navigation, route }) {
 
     const handleFollowers = () => navigation.navigate('Followers', { followers, user: data.login });
 
-    console.log(exist);
-
     return (
         <Container>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -192,11 +190,11 @@ export default function Profile({ navigation, route }) {
                 <ContentUser>
                     {exist ? (
                         <Button style={{ backgroundColor: 'red' }} disabled={loadingDelToStore} onPress={delUser}>
-                            {loadingDelToStore ? <ActivityIndicator /> : <ButtonText>Remover da minha lista</ButtonText>}
+                            {loadingDelToStore ? <ActivityIndicator /> : <ButtonText><MaterialCommunityIcons name="minus-circle" size={18} /> Remover da minha lista</ButtonText>}
                         </Button>
                     ) : (
                             <Button style={{ backgroundColor: 'green' }} disabled={loadingAddToStore} onPress={addUser}>
-                                {loadingAddToStore ? <ActivityIndicator /> : <ButtonText>Salvar na minha lista</ButtonText>}
+                                {loadingAddToStore ? <ActivityIndicator /> : <ButtonText><MaterialCommunityIcons name="plus" size={18} /> Salvar na minha lista</ButtonText>}
                             </Button>
                         )}
                     <Button disabled={loading} onPress={handleRepositories}>
