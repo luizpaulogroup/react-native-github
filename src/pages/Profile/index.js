@@ -143,13 +143,6 @@ export default function Profile({ navigation, route }) {
 
         try {
 
-            var obj = {
-                id: data.id,
-                login: data.login,
-                avatar_url: data.avatar_url,
-                bio: data.bio
-            }
-
             const storage = await AsyncStorage.getItem('STORE');
 
             var json = JSON.parse(storage);
