@@ -2,19 +2,50 @@ import React, { useEffect, useState } from 'react';
 
 import { Container, Title, Input, Button, ButtonText } from '../../Components/Container';
 
+import api from '../../services/api';
+
 export default function Home({ navigation }) {
 
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState("luizpaulogroup");
+
+    const getUser = async () => {
+
+        try {
+
+            if (!user) {
+                alert('Enter the name please');
+                return;
+            }
+
+            const response = await api.get(`/users/${user}`);
+
+            const { data } = response;
+
+            if (!data.id) {
+                alert('Usuário não encontrado');
+                return;
+            }
+
+            navigation.navigate('Profile', { data });
+
+        } catch (error) {
+            alert(error.message);
+        }
+
+    }
 
     return (
-        <Container>
+        <Container style={{
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
             <Title>Search for github users</Title>
             <Input
                 placeholder="Enter the name here..."
                 value={user}
                 onChangeText={setUser}
             />
-            <Button onPress={() => navigation.navigate('Profile')}>
+            <Button onPress={getUser}>
                 <ButtonText>Search</ButtonText>
             </Button>
         </Container>
