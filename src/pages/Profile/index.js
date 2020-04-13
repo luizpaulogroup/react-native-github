@@ -8,94 +8,22 @@ import { Container } from '../../Components/Container';
 
 import { ButtonBack, ContentUser, BioUser, ActionsUser, Button, ButtonText } from './styles';
 
-import api from '../../services/api';
-
 export default function Profile({ navigation, route }) {
 
     const { user, refresh } = route.params;
 
-    const [repos, setRepos] = useState([]);
     const [exist, setExist] = useState(false);
     const [update, setUpdate] = useState(0);
-    const [followers, setFollowers] = useState([]);
-    const [errorRepos, setErrorRepos] = useState(false);
-    const [loadingRepos, setLoadingRepos] = useState(false);
-    const [errorFollowers, setErrorFollowers] = useState(false);
-    const [loadingFollowers, setLoadingFollowers] = useState(false);
     const [loadingAddToStore, setLoadingAddToStore] = useState(false);
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
 
     if (refresh) {
-
-        useEffect(() => {
-            getRepos();
-            getFollowers();
-        }, []);
-
-    }
-
-    useEffect(() => {
         retriveData();
-    }, []);
-
-    useEffect(() => {
-        getRepos();
-        getFollowers();
-    }, [update]);
-
-    async function getRepos() {
-
-        console.log('getRepos');
-
-        setLoadingRepos(true);
-        setErrorRepos(false);
-
-        try {
-
-            const response = await api.get(`/users/${user.login}/repos`);
-
-            setRepos(response.data);
-
-        } catch (error) {
-            setErrorRepos(true);
-            setLoadingRepos(false);
-            alert(`getRepos: ${error.message}`);
-            return;
-        }
-
-        setLoadingRepos(false);
-
     }
 
-    async function getFollowers() {
-
-        console.log('getFollowers');
-
-        setLoadingFollowers(true);
-        setErrorFollowers(false);
+    async function retriveData() {
 
         try {
-
-            const response = await api.get(`/users/${user.login}/followers`);
-
-            setFollowers(response.data);
-
-        } catch (error) {
-            setErrorFollowers(true);
-            setLoadingFollowers(false);
-            alert(`getFollowers : ${error.message}`);
-            return;
-        }
-
-        setLoadingFollowers(false);
-
-    }
-
-    const retriveData = async () => {
-
-        try {
-
-            console.log('retriveData');
 
             const storage = await AsyncStorage.getItem('STORE');
 
@@ -213,9 +141,9 @@ export default function Profile({ navigation, route }) {
 
     }
 
-    const handleRepositories = () => navigation.navigate('Repositories', { repos, user: user.login });
+    const handleRepositories = () => navigation.navigate('Repositories', { user: user.login });
 
-    const handleFollowers = () => navigation.navigate('Followers', { followers, user: user.login });
+    const handleFollowers = () => navigation.navigate('Followers', { user: user.login });
 
     return (
         <Container style={{
@@ -223,7 +151,7 @@ export default function Profile({ navigation, route }) {
             justifyContent: 'center'
         }}>
             <AnimatedHeader
-                style={{ flex: 1 }}
+                style={{ flex: 1, alignSelf: 'stretch' }}
                 title={user.login}
                 renderLeft={() => (
                     <ButtonBack onPress={() => navigation.goBack()}>
@@ -256,12 +184,12 @@ export default function Profile({ navigation, route }) {
                                         {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
                                     </Button>
                                 )}
-                            {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
-                                {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
-                            </Button>}
-                            {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
-                                {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                            </Button>}
+                            <Button style={{ marginLeft: 2 }} onPress={handleRepositories}>
+                                <ButtonText>Repositories</ButtonText>
+                            </Button>
+                            <Button style={{ marginLeft: 2 }} onPress={handleFollowers}>
+                                <ButtonText>Followers</ButtonText>
+                            </Button>
                         </ActionsUser>
                     </ContentUser>
                 </ScrollView>

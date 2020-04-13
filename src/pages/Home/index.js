@@ -45,7 +45,7 @@ export default function Home({ navigation }) {
                 return;
             }
 
-            navigation.navigate('Profile', { user: data, refresh: false });
+            navigation.navigate('Profile', { user: data, refresh: true });
 
         } catch (error) {
             alert(error.message);

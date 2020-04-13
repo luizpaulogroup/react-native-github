@@ -163,7 +163,7 @@ export default class Header extends React.PureComponent {
           },
         ]}>
         {imageSource && <Animated.Image
-          style={[StyleSheet.absoluteFill, { width: null, height: null, opacity: imageOpacity }, this._getImageScaleStyle()]}
+          style={[StyleSheet.absoluteFill, { alignSelf: 'stretch', width: null, height: null, opacity: imageOpacity }, this._getImageScaleStyle()]}
           source={{ uri: imageSource }}
           resizeMode="contain"
         />}

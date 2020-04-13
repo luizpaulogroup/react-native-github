@@ -16,9 +16,17 @@ export const Follower = styled.TouchableOpacity`
     padding: 10px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     border-bottom-width: ${StyleSheet.hairlineWidth}px;
     background: #FFF;
     border-radius: 5px;
+`;
+
+export const FollowerInfo = styled.View`
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
 `;
 
 export const FollowerAvatarUrl = styled.Image`
