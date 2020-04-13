@@ -165,7 +165,7 @@ export default class Header extends React.PureComponent {
         {imageSource && <Animated.Image
           style={[StyleSheet.absoluteFill, { width: null, height: null, opacity: imageOpacity }, this._getImageScaleStyle()]}
           source={{ uri: imageSource }}
-          resizeMode='cover'
+          resizeMode="contain"
         />}
         <View style={styles.toolbarContainer}>
           <View style={styles.statusBar} />

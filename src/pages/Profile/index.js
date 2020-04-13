@@ -12,9 +12,11 @@ import api from '../../services/api';
 
 export default function Profile({ navigation, route }) {
 
-    const { user } = route.params;
+    const { user, refresh } = route.params;
 
     const [repos, setRepos] = useState([]);
+    const [exist, setExist] = useState(false);
+    const [update, setUpdate] = useState(0);
     const [followers, setFollowers] = useState([]);
     const [errorRepos, setErrorRepos] = useState(false);
     const [loadingRepos, setLoadingRepos] = useState(false);
@@ -22,15 +24,28 @@ export default function Profile({ navigation, route }) {
     const [loadingFollowers, setLoadingFollowers] = useState(false);
     const [loadingAddToStore, setLoadingAddToStore] = useState(false);
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
-    const [exist, setExist] = useState(false);
+
+    if (refresh) {
+
+        useEffect(() => {
+            getRepos();
+            getFollowers();
+        }, []);
+
+    }
 
     useEffect(() => {
         retriveData();
-        // getRepos();
-        // getFollowers();
-    }, [exist, repos, followers]);
+    }, []);
 
-    const getRepos = async () => {
+    useEffect(() => {
+        getRepos();
+        getFollowers();
+    }, [update]);
+
+    async function getRepos() {
+
+        console.log('getRepos');
 
         setLoadingRepos(true);
         setErrorRepos(false);
@@ -52,7 +67,9 @@ export default function Profile({ navigation, route }) {
 
     }
 
-    const getFollowers = async () => {
+    async function getFollowers() {
+
+        console.log('getFollowers');
 
         setLoadingFollowers(true);
         setErrorFollowers(false);
@@ -77,6 +94,8 @@ export default function Profile({ navigation, route }) {
     const retriveData = async () => {
 
         try {
+
+            console.log('retriveData');
 
             const storage = await AsyncStorage.getItem('STORE');
 
@@ -144,6 +163,7 @@ export default function Profile({ navigation, route }) {
                 await AsyncStorage.setItem('STORE', JSON.stringify(array));
 
                 setExist(true);
+                setUpdate(update + 1);
 
             }
 
@@ -181,6 +201,7 @@ export default function Profile({ navigation, route }) {
             await AsyncStorage.setItem('STORE', JSON.stringify(array));
 
             setExist(false);
+            setUpdate(update + 1);
 
             console.log('User successfully removed from your list');
 
@@ -235,12 +256,12 @@ export default function Profile({ navigation, route }) {
                                         {loadingAddToStore ? <ActivityIndicator /> : <ButtonText style={{ color: '#FFF' }}>Follow</ButtonText>}
                                     </Button>
                                 )}
-                            {/* {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
+                            {!errorRepos && <Button style={{ marginLeft: 2 }} disabled={loadingRepos} onPress={handleRepositories}>
                                 {loadingRepos ? <ActivityIndicator /> : <ButtonText>Repositories</ButtonText>}
                             </Button>}
                             {!errorFollowers && <Button style={{ marginLeft: 2 }} disabled={loadingFollowers} onPress={handleFollowers}>
                                 {loadingFollowers ? <ActivityIndicator /> : <ButtonText>Followers</ButtonText>}
-                            </Button>} */}
+                            </Button>}
                         </ActionsUser>
                     </ContentUser>
                 </ScrollView>
