@@ -12,6 +12,16 @@ export default function Account({ navigation }) {
     const [loadingDelToStore, setLoadingDelToStore] = useState(false);
 
     useEffect(() => {
+
+        return navigation.addListener('tabPress', e => {
+            e.preventDefault();
+            retriveData();
+            navigation.jumpTo('Account');
+        });
+
+    }, [navigation]);
+
+    useEffect(() => {
         retriveData();
     }, [userId]);
 

@@ -132,7 +132,6 @@ function Profile({ navigation, route }) {
 
             _storage(_user);
 
-
         } catch (error) {
             setLoadingAddToStore(false);
             console.log(error);
