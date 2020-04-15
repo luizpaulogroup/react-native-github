@@ -6,7 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 import Home from '../pages/Home';
-import Account from '../pages/Account';
+import Store from '../pages/Store';
 import Configuration from '../pages/Configuration';
 import Profile from '../pages/Profile';
 import Repositories from '../pages/Repositories';
@@ -61,8 +61,8 @@ const Routes = () => (
                         ),
                     }} />
                 <Tabs.Screen
-                    name="Account"
-                    component={Account}
+                    name="Store"
+                    component={Store}
                     options={{
                         title: "STORE",
                         tabBarLabel: "STORE",

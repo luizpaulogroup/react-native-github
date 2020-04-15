@@ -5,7 +5,7 @@ import { Container, Title } from '../../Components/Container';
 
 import { ContentUser, User, UserInfo, UserAvatarUrl, UserName, Button, ButtonText } from './styles';
 
-export default function Account({ navigation }) {
+export default function Store({ navigation }) {
 
     const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState(0);
