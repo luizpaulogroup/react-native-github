@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, ActivityIndicator, View } from 'react-native';
+import { StackActions } from '@react-navigation/native';
 
 import { Container, Title } from '../../Components/Container';
 
@@ -29,7 +30,11 @@ export default function Followers({ navigation, route }) {
 
             const { data } = response;
 
-            navigation.navigate('Profile', { user: data, refresh: true });
+            navigation.dispatch(
+                StackActions.replace('Profile', {
+                    user: data, refresh: true
+                })
+            )
 
         } catch (error) {
             setUserId("");

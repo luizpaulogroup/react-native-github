@@ -9,7 +9,7 @@ import api from '../../services/api';
 
 export default function Home({ navigation }) {
 
-    const [user, setUser] = useState("vitorserrano");
+    const [user, setUser] = useState("luizpaulogroup");
     const [loading, setLoading] = useState(false);
     const [isConnected, setIsConnected] = useState(true);
 

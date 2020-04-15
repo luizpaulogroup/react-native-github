@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-animated-header
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
   C:\Users\Luiz Paulo\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Luiz Paulo\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Program Files\Condusiv Technologies\ExpressCache;C:\Program Files\Git LFS;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\composer;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\Luiz Paulo\AppData\Local\Microsoft\WindowsApps;C:\Users\Luiz Paulo\AppData\Local\Yarn\bin;C:\Users\Luiz Paulo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Luiz Paulo\AppData\Roaming\npm;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Users\Luiz Paulo\AppData\Local\atom\bin;C:\Users\Luiz Paulo\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\Luiz Paulo\AppData\Local\GitHubDesktop\bin;C:\xamp\php;C:\Users\Luiz Paulo\composer;C:\Users\Luiz Paulo\AppData\Roaming\Composer\vendor\bin;C:\Users\Luiz Paulo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Luiz Paulo\Desktop\REPOS\mygit\node_modules\@babel\generator\node_modules\.bin'
+  Error: EPERM: operation not permitted, lstat 'C:\Users\Luiz Paulo\Desktop\REPOS\mygit\node_modules\react-native-easy-toast'
 
 npm manifest: 
   {
@@ -40,6 +40,7 @@ npm manifest:
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+      "react-native-animated-header": "^1.0.7",
       "react-native-gesture-handler": "~1.6.0",
       "react-native-paper": "^3.8.0",
       "react-native-reanimated": "~1.7.0",
@@ -4436,7 +4437,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4504,6 +4505,18 @@ Lockfile:
     version "16.13.1"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+  
+  react-native-animated-header@^1.0.7:
+    version "1.0.7"
+    resolved "https://registry.yarnpkg.com/react-native-animated-header/-/react-native-animated-header-1.0.7.tgz#df9793e60b86e9106b31dcb1a3f2ef4ac37c0db9"
+    integrity sha512-h+YN9eukJYreoWIYrZu5oZL8vKoynkoqe8Icfn3k+0kXRtiZWA4rP31uabF8lavLm5F3N28uIj7BFvWthLrN7Q==
+  
+  react-native-easy-toast@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/react-native-easy-toast/-/react-native-easy-toast-1.2.0.tgz#0f70bcb99e3306cda4800c244bfb4a67d42276ed"
+    integrity sha512-UtpxnRn1ME+035Uey4VR+9K0P4aVoTcWNOx5QkioWBe3LBKMPb/kZjrQ1LtvWzOyeGP4TeTUTtMX3IOPWv5MtA==
+    dependencies:
+      prop-types "^15.5.10"
   
   react-native-gesture-handler@~1.6.0:
     version "1.6.1"

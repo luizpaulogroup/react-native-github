@@ -64,10 +64,10 @@ const Routes = () => (
                     name="Account"
                     component={Account}
                     options={{
-                        title: "ACCOUNT",
-                        tabBarLabel: "ACCOUNT",
+                        title: "STORE",
+                        tabBarLabel: "STORE",
                         tabBarIcon: ({ color }) => (
-                            <MaterialCommunityIcons name="account" color={color} size={26} />
+                            <MaterialCommunityIcons name="account-multiple" color={color} size={26} />
                         ),
                     }} />
                 <Tabs.Screen
