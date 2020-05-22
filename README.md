@@ -1,4 +1,4 @@
-<h1 align="center"># Application search user github</h1>
+<h1 align="center">Application search user github</h1>
 
 - Search user GitHub
 - Add/Remove to localStorage using AsynStorage
