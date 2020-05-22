@@ -1,13 +1,5 @@
 <h1 align="center">Application search user github</h1>
 
-- Search user GitHub
-- Add/Remove to localStorage using AsynStorage
-- List followers/repositories from user searched
-
-### :rocket:Technologies
-
-<h1 align="center"><img src="https://github.com/luizpaulogroup/mygit/blob/master/src/Gif/GIF.gif" /></h1>
-
 <h1 align="center">
     <img alt="Github logo" width="60px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/github.png">
     <img alt="React logo" width="50px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/expo.png" />
@@ -19,6 +11,12 @@
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;
 </p>
+
+- Search user GitHub
+- Add/Remove to localStorage using AsynStorage
+- List followers/repositories from user searched
+
+<h1 align="center"><img src="https://github.com/luizpaulogroup/mygit/blob/master/src/Gif/GIF.gif" /></h1>
 
 ## :rocket: Technologies
 
