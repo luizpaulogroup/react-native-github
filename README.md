@@ -10,13 +10,11 @@
 
 <h1 align="center">
     <img alt="Github logo" width="60px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/github.png">
-    <img alt="React logo" width="70px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/reactnative.png" />
+    <img alt="React logo" width="70px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/reactnative.jpg" />
     <br>
-    Nubank React Clone
+    Github React Native
 </h1>
 
-<h4 align="center">Clone of the nubank company website: <a href="https://nubank.com.br/">Nubank</a>
-</h4>
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;
