@@ -9,9 +9,11 @@
 
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#heavy_check_mark-functionalities">How To Use</a>
 </p>
 
+## :heavy_check_mark: functionalities
 - Search user GitHub
 - Add/Remove to localStorage using AsynStorage
 - List followers/repositories from user searched
