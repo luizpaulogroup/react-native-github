@@ -10,7 +10,7 @@
 
 <h1 align="center">
     <img alt="Github logo" width="60px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/github.png">
-    <img alt="React logo" width="70px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/reactnative.jpg" />
+    <img alt="React logo" width="70px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/expo.png" />
     <br>
     Github React Native
 </h1>
