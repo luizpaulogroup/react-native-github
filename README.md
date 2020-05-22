@@ -12,7 +12,7 @@
     <img alt="Github logo" width="60px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/github.png">
     <img alt="React logo" width="50px" height="50px" src="https://github.com/luizpaulogroup/react-native-github/blob/master/src/Gif/expo.png" />
     <br>
-    Github React Native
+    Github Expo
 </h1>
 
 <p align="center">
@@ -24,9 +24,9 @@
 
 This project was developed with the technologies:
 
--  [React](https://pt-br.reactjs.org/)
--  [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start)
--  [react-bootstrap](https://react-bootstrap.netlify.app/)
+-  [Expo](https://expo.io/)
+-  [react-navigation](https://reactnavigation.org/)
+-  [axios](https://github.com/axios/axios)
 -  [styled-components](https://www.styled-components.com/)
 -  [VS Code][vc]
 
@@ -36,10 +36,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Node
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/luizpaulogroup/react-nubank
+$ git clone https://github.com/luizpaulogroup/react-native-github
 
 # Go into the repository
-$ cd react-nubank
+$ cd react-native-github
 
 # Install dependencies
 $ yarn install
