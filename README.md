@@ -28,7 +28,7 @@ This project was developed with the technologies:
 -  [react-navigation](https://reactnavigation.org/)
 -  [axios](https://github.com/axios/axios)
 -  [styled-components](https://www.styled-components.com/)
--  [VS Code][vc]
+-  [Visual Studio Code](https://code.visualstudio.com/)
 
 ## :information_source: How To Use
 
