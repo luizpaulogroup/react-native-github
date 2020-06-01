@@ -51,4 +51,4 @@ $ yarn start
 
 ---
 
-Made with ♥ by Luiz Paulo Gonçalves :wave: [Get in touch!](https://www.linkedin.com/in/luiz-paulo/)
+Made with ♥ by Luiz Paulo :wave: [Get in touch!](https://www.linkedin.com/in/luiz-paulo/)
